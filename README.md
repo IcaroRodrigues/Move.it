@@ -18,6 +18,10 @@
 
 <br>
 
+## 🔗 Link
+
+Acessar o site: https://icaro-move-it.vercel.app/
+
 ## 🚀 Tecnologias
 
 Tecnologas utilizadas para fazer o projeto:
