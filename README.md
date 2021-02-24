@@ -26,6 +26,8 @@ Tecnologas utilizadas para fazer o projeto:
 - [React](https://reactjs.org)
 - [TypeScript](https://www.typescriptlang.org/)
 
+
+
 ## 💻 Projeto
 
 O Move.it veio com um propósito de trazer motivação na hora de se exercitar! 💜 
