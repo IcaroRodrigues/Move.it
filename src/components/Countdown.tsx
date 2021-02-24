@@ -47,7 +47,7 @@ export default function Countdown() {
         onClick={startCountDown}
         style={{ background: active === true ? 'var(--red)' : 'var(--blue)'}}
       >
-        {active === true ? 'Pausar ciclo' : 'Iniciar ciclo'}
+        {active === true ? 'Abandonar ciclo' : 'Iniciar ciclo'}
       </button>
     </div>
   )
