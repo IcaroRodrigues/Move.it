@@ -5,6 +5,7 @@ export default function Countdown() {
 
   const [time, setTime] = useState(25 * 60)
   const [active, setActive] = useState(false)
+  const [buttonText, setButtonText] = useState('Iniciar um ciclo')
 
   const minutes = Math.floor(time / 60)
   const seconds = time % 60
@@ -44,8 +45,9 @@ export default function Countdown() {
         type="button"
         className={styles.countdownButton}
         onClick={startCountDown}
+        style={{ background: active === true ? 'var(--red)' : 'var(--blue)'}}
       >
-        Iniciar um ciclo
+        {active === true ? 'Pausar ciclo' : 'Iniciar ciclo'}
       </button>
     </div>
   )
