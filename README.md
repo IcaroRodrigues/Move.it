@@ -1,5 +1,6 @@
-### Move.it
-
+<p align="center">
+  <img alt="Moveit" src="public/logo-full.svg" width="120px">
+</p>
 
 <h1 align="center">
     <img alt="Move.it" title="Move.it" src="./public/banner.png" />
