@@ -40,3 +40,7 @@ Este é um projeto desenvolvido durante a **[Next Level Week](https://nextlevelw
 Toda interface no qual projeto foi baseado pode ser visualizado através do link:
 
 - [Layout Web](https://www.figma.com/file/ge20pu3ofMOKoliUyKx1Nl/Move.it-1.0)
+
+## 📝 Licença
+
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
