@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="Move.it" title="Move.it" src="banner.png" />
+    <img alt="Move.it" title="Move.it" src="./public/banner.png" />
 </h1>
 
 <p align="center">
