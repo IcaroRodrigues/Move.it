@@ -20,7 +20,7 @@
 
 ## 🔗 Link
 
-Acessar o site: https://icaro-move-it.vercel.app/
+Link para aplicação: https://icaro-move-it.vercel.app/
 
 ## 🚀 Tecnologias
 
