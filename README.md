@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Moveit" src="public/logo-full.svg" width="120px">
+  <img alt="Moveit" src="public/logo-full.svg" width="300px">
 </p>
 
 <h1 align="center">
@@ -17,10 +17,6 @@
  </p>
 
 <br>
-
-<p align="center">
-  <img alt="Moveit" src="public/logo-full.svg" width="120px">
-</p>
 
 ## 🚀 Tecnologias
 
