@@ -4,10 +4,10 @@ import styles from '../styles/components/CompletedChallenges.module.css'
 
 export default function CompletedChallenges() {
 
-  const { challengesCompleted } = useContext(ChallengesContext)
+  const { challengesCompleted, darkModeIsActive } = useContext(ChallengesContext)
 
   return (
-    <div className={styles.completedChallengesContainer}>
+    <div className={`${styles.completedChallengesContainer} ${darkModeIsActive ? `${styles.darkModeisActive}` : ''}`}>
       <span>Desafios completos</span>
       <span>{challengesCompleted}</span>
     </div>

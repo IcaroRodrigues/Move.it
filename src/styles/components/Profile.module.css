@@ -21,6 +21,13 @@
     color: var(--title);
 }
 
+.profileContainer.darkModeisActive div strong {
+
+  color: var(--title-dark-mode);
+}
+
+
+
 .profileContainer div p {
     font-size: 1rem;
     margin-top: 0.5rem;
@@ -28,4 +35,11 @@
 
 .profileContainer div p img {
     margin-right: 0.5rem;
+}
+
+@media ( max-width: 700px ) {
+
+  .profileContainer {
+    margin-top: 100px;
+  }
 }

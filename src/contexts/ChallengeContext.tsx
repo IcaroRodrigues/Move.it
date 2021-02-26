@@ -1,11 +1,11 @@
-import { createContext, useState, ReactNode } from 'react'
+import { createContext, useState, ReactNode, HTMLAttributes, useEffect } from 'react'
 
 import challenges from '../../challenges.json'
 
 interface Challenge {
   type: 'body' | 'eye',
   description: string
-  amout: number
+  amount: number
 }
 
 interface ChallengesContextData {
@@ -14,9 +14,11 @@ interface ChallengesContextData {
   experienceToNextLevel: number
   challengesCompleted: number
   activeChallenge: Challenge
+  darkModeIsActive: boolean
   levelUp: () => void
   startNewChallenge: () => void
   resetChallenge: () => void
+  setDarkMode: () => void
 }
 
 interface ChallengesProviderProps {
@@ -27,13 +29,28 @@ export const ChallengesContext = createContext({} as ChallengesContextData)
 
 export function ChallengesProvider({ children }: ChallengesProviderProps ) {
 
+
+
   const [level, setLevel] = useState(1)
   const [currentExperience, setCurrentExperience] = useState(0)
   const [challengesCompleted, setChallengesCompleted] = useState(0)
+  const [darkModeIsActive, setDarkModeIsActive] = useState(false)
 
   const [activeChallenge, setActiveChallenge] = useState(null)
 
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2)
+
+  useEffect(() => {
+    const darkMode = localStorage.getItem('darkMode')
+    if ( darkMode ) {
+      setDarkModeIsActive(JSON.parse(darkMode))
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', JSON.stringify(darkModeIsActive))
+    
+  }, [darkModeIsActive])
 
   function levelUp() {
 
@@ -53,6 +70,11 @@ export function ChallengesProvider({ children }: ChallengesProviderProps ) {
     setActiveChallenge(null)
   }
 
+  function setDarkMode() {
+
+    setDarkModeIsActive(!darkModeIsActive)
+  }
+
   return (
     <ChallengesContext.Provider 
       value={{ 
@@ -63,10 +85,11 @@ export function ChallengesProvider({ children }: ChallengesProviderProps ) {
         startNewChallenge,
         activeChallenge,
         resetChallenge,
-        experienceToNextLevel
+        experienceToNextLevel,
+        darkModeIsActive,
+        setDarkMode,
       }}
     >
-
       {children}
     
     </ChallengesContext.Provider>

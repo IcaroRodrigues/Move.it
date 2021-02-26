@@ -6,7 +6,7 @@ let countdownTimeout: NodeJS.Timeout;
 
 export default function Countdown() {
 
-  const { startNewChallenge } = useContext(ChallengesContext)
+  const { startNewChallenge, darkModeIsActive } = useContext(ChallengesContext)
  
   const [time, setTime] = useState(0.05 * 60)
   const [isActive, setIsActive] = useState(false)
@@ -46,7 +46,7 @@ export default function Countdown() {
 
   return (
     <div>
-      <div className={styles.countdownContainer}>
+      <div className={`${styles.countdownContainer} ${darkModeIsActive ? `${styles.darkModeIsActive}` : '' }`}>
         <div>
           <span>{minuteLeft}</span>
           <span>{minuteRight}</span>
@@ -61,7 +61,7 @@ export default function Countdown() {
       {hasFinished ? (
         <button
           disabled
-          className={styles.countdownButton}
+          className={`${styles.countdownButton} ${darkModeIsActive ? `${styles.darkModeIsActive}` : ''}`}
         >
           Ciclo encerrado
         </button>
@@ -71,7 +71,7 @@ export default function Countdown() {
             {isActive ? (
               <button
                 type="button"
-                className={`${styles.countdownButton} ${styles.countdownButtonActive}`}
+                className={`${styles.countdownButton} ${styles.countdownButtonActive} ${darkModeIsActive ? `${styles.darkModeIsActive}` : ''}`}
                 onClick={resetCountDown}
               >
                 Abadonar ciclo

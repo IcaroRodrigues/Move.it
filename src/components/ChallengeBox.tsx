@@ -4,14 +4,14 @@ import styles from '../styles/components/ChallengeBox.module.css'
 
 export default function ChallengeBox() {
 
-  const { activeChallenge, resetChallenge } = useContext(ChallengesContext)
+  const { activeChallenge, resetChallenge, darkModeIsActive } = useContext(ChallengesContext)
 
   return (
     
-    <div className={styles.challengeBoxContainer}>
+    <div className={`${styles.challengeBoxContainer} ${darkModeIsActive ? `${styles.darkModeIsActive}` : ''}`}>
       { activeChallenge ? (
-        <div className={styles.challengeActive}>
-          <header>Ganhe { activeChallenge.amout }</header>
+        <div className={`${styles.challengeActive} ${darkModeIsActive ? `${styles.darkModeIsActive}` : ''}`}>
+          <header>Ganhe { activeChallenge.amount } xp</header>
           <main>
             <img src={`icons/${activeChallenge.type}.svg`} />
             <strong>Novo desafio</strong>

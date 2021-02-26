@@ -4,6 +4,11 @@
     font-family: Rajdhani;
     font-weight: 600;
     color: var(--title);
+    animation: fadeContainer 2s;
+}
+
+.countdownContainer.darkModeIsActive {
+  color: var(--text-dark-mode);
 }
 
 .countdownContainer > div {
@@ -27,14 +32,28 @@
     flex: 1;
 }
 
+.countdownContainer.darkModeIsActive > div span{
+  background: #2E3236;
+}
+
 .countdownContainer > div span:first-child {
 
     border-right: 1px solid #f0f1f3;
 }
 
+.countdownContainer.darkModeIsActive > div span:first-child {
+
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
 .countdownContainer > div span:last-child {
 
     border-left: 1px solid #f0f1f3;
+}
+
+.countdownContainer.darkModeIsActive > div span:last-child {
+
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .countdownContainer > span {
@@ -75,6 +94,12 @@
   color: var(--title);
 }
 
+.countdownButtonActive.darkModeIsActive {
+  background-color: #2E3236;
+  color: var(--text-dark-mode);
+}
+
+
 .countdownButtonActive:not(:disabled):hover {
   background-color: var(--red);
   color: var(--white);
@@ -85,6 +110,14 @@
   position: relative;
   background: var(--white);
   color: var(--title);
+  cursor: not-allowed;
+}
+
+.countdownButton.darkModeIsActive:disabled {
+
+  position: relative;
+  background: #2E3236;
+  color: var(--text-dark-mode);
   cursor: not-allowed;
 }
 
