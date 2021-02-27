@@ -21,7 +21,7 @@ export const CountdownContext = createContext({} as CountdownContextData)
 
 export function CountdownProvider({ children }: CountdownProviderProps) {
 
-  const { startNewChallenge, darkModeIsActive } = useContext(ChallengesContext)
+  const { startNewChallenge } = useContext(ChallengesContext)
  
   const [time, setTime] = useState(0.05 * 60)
   const [isActive, setIsActive] = useState(false)

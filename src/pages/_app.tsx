@@ -1,13 +1,11 @@
+import { DarkModeProvider } from "../contexts/DarkModeContext"
 import "../styles/global.css"
-
-import { ChallengesProvider } from '../contexts/ChallengeContext'
-import { CountdownProvider } from '../contexts/CountdownContext'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ChallengesProvider >
+    <DarkModeProvider>
       <Component {...pageProps} />
-    </ChallengesProvider>
+    </DarkModeProvider>
   )
 }
 

@@ -1,7 +1,8 @@
-import { createContext, useState, ReactNode, HTMLAttributes, useEffect } from 'react'
+import { createContext, useState, ReactNode, useEffect } from 'react'
+import Cookies from 'js-cookie'
 
 import challenges from '../../challenges.json'
-
+import LevelUpModal from '../components/LevelUpModal'
 interface Challenge {
   type: 'body' | 'eye',
   description: string
@@ -19,47 +20,51 @@ interface ChallengesContextData {
   startNewChallenge: () => void
   completedChallenge: () => void
   resetChallenge: () => void
+  closeLevelUpModal: () => void
   setDarkMode: () => void
 }
 
 interface ChallengesProviderProps {
   children: ReactNode
+  level: number
+  currentExperience: number
+  challengesCompleted: number
 }
 
 export const ChallengesContext = createContext({} as ChallengesContextData)
 
-export function ChallengesProvider({ children }: ChallengesProviderProps ) {
+export function ChallengesProvider({ children, ...rest }: ChallengesProviderProps ) {
 
-
-
-  const [level, setLevel] = useState(1)
-  const [currentExperience, setCurrentExperience] = useState(0)
-  const [challengesCompleted, setChallengesCompleted] = useState(0)
-  const [darkModeIsActive, setDarkModeIsActive] = useState(false)
+  const [level, setLevel] = useState(rest.level ?? 1)
+  const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ?? 0)
+  const [challengesCompleted, setChallengesCompleted] = useState( rest.challengesCompleted ?? 0)
+  const [darkModeIsActive, setDarkModeIsActive] = useState(true)
 
   const [activeChallenge, setActiveChallenge] = useState(null)
+  const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false)
 
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2)
-
-  useEffect(() => {
-    const darkMode = localStorage.getItem('darkMode')
-    if ( darkMode ) {
-      setDarkModeIsActive(JSON.parse(darkMode))
-    }
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem('darkMode', JSON.stringify(darkModeIsActive))
-    
-  }, [darkModeIsActive])
 
   useEffect(() => {
     Notification.requestPermission();
   }, [])
 
+  useEffect(() => {
+
+    Cookies.set('level', String(level))
+    Cookies.set('currentExperience', String(currentExperience))
+    Cookies.set('challengesCompleted', String(challengesCompleted))
+    
+  }, [level, currentExperience, challengesCompleted])
+
   function levelUp() {
 
     setLevel(level + 1)
+    setIsLevelUpModalOpen(true)
+  }
+
+  function closeLevelUpModal() {
+    setIsLevelUpModalOpen(false)
   }
 
   function startNewChallenge() {
@@ -125,11 +130,13 @@ export function ChallengesProvider({ children }: ChallengesProviderProps ) {
         experienceToNextLevel,
         darkModeIsActive,
         setDarkMode,
-        completedChallenge
+        completedChallenge,
+        closeLevelUpModal
       }}
     >
       {children}
-    
+      
+      { isLevelUpModalOpen && <LevelUpModal /> } 
     </ChallengesContext.Provider>
   )
 }

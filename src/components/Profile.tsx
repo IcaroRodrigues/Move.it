@@ -1,10 +1,13 @@
 import { useContext } from 'react'
 import { ChallengesContext } from '../contexts/ChallengeContext'
+import { DarkModeContext } from '../contexts/DarkModeContext'
 import styles from '../styles/components/Profile.module.css'
 
 export default function Profile() {
 
-  const { darkModeIsActive, level } = useContext(ChallengesContext)
+  const { level } = useContext(ChallengesContext)
+  const { darkModeIsActive } = useContext(DarkModeContext)
+
 
   return (
     <div className={`${styles.profileContainer} ${darkModeIsActive ? `${styles.darkModeisActive}` : '' }`}>

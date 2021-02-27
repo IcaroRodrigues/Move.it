@@ -1,13 +1,14 @@
 import { useContext, useEffect, useState } from 'react'
 import { ChallengesContext } from '../contexts/ChallengeContext';
 import { CountdownContext } from '../contexts/CountdownContext';
+import { DarkModeContext } from '../contexts/DarkModeContext';
 
 import styles from '../styles/components/Countdown.module.css'
 
 
 export default function Countdown() {
 
-  const { darkModeIsActive } = useContext(ChallengesContext)
+  const { darkModeIsActive } = useContext(DarkModeContext)
   const { 
     minutes,
     seconds, 
