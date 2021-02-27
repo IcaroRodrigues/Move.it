@@ -4,7 +4,7 @@ import styles from '../styles/components/Profile.module.css'
 
 export default function Profile() {
 
-  const { darkModeIsActive } = useContext(ChallengesContext)
+  const { darkModeIsActive, level } = useContext(ChallengesContext)
 
   return (
     <div className={`${styles.profileContainer} ${darkModeIsActive ? `${styles.darkModeisActive}` : '' }`}>
@@ -13,7 +13,7 @@ export default function Profile() {
         <strong>Icaro Rodrigues</strong>
         <p>
           <img src="icons/level.svg" alt="Level" />
-            Level 1
+            Level { level }
         </p>
       </div>
     </div>

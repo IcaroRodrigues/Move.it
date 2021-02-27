@@ -47,9 +47,11 @@ body {
     background: var(--background);
     color: var(--text);
     font-family: Arial, Helvetica, sans-serif;
+    transition: 0.2s;
 }
 
-body.darkModeIsActive {
+.darkModeIsActive {
+  transition: 0.2s;
   background: var(--background-dark-mode);
   color: var(--text-dark-mode);
 }

@@ -17,6 +17,7 @@ interface ChallengesContextData {
   darkModeIsActive: boolean
   levelUp: () => void
   startNewChallenge: () => void
+  completedChallenge: () => void
   resetChallenge: () => void
   setDarkMode: () => void
 }
@@ -52,6 +53,10 @@ export function ChallengesProvider({ children }: ChallengesProviderProps ) {
     
   }, [darkModeIsActive])
 
+  useEffect(() => {
+    Notification.requestPermission();
+  }, [])
+
   function levelUp() {
 
     setLevel(level + 1)
@@ -63,6 +68,16 @@ export function ChallengesProvider({ children }: ChallengesProviderProps ) {
     const challenge = challenges[randomChallengeIndex]
   
     setActiveChallenge(challenge)
+
+    new Audio('/notification.mp3').play
+
+    if ( Notification.permission === 'granted' ) {
+
+      new Notification('Novo desafio 🎉',  {
+
+        body: `Valendo ${challenge.amount}xp!`
+      })
+    }
   }
 
   function resetChallenge() {
@@ -73,6 +88,28 @@ export function ChallengesProvider({ children }: ChallengesProviderProps ) {
   function setDarkMode() {
 
     setDarkModeIsActive(!darkModeIsActive)
+  }
+
+  function completedChallenge() {
+
+    if ( !activeChallenge ) {
+
+      return;
+    }
+
+    const { amount } = activeChallenge
+
+    let finalExperience = currentExperience + amount
+
+    if ( finalExperience >= experienceToNextLevel ) {
+      
+      finalExperience = finalExperience - experienceToNextLevel
+      levelUp()
+    }
+
+    setCurrentExperience(finalExperience)
+    setActiveChallenge(null)
+    setChallengesCompleted(challengesCompleted + 1)
   }
 
   return (
@@ -88,6 +125,7 @@ export function ChallengesProvider({ children }: ChallengesProviderProps ) {
         experienceToNextLevel,
         darkModeIsActive,
         setDarkMode,
+        completedChallenge
       }}
     >
       {children}

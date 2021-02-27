@@ -132,6 +132,19 @@
   transition: filter 0.2s;
 }
 
+@media( max-width: 700px ) {
+
+  .challengeActive footer button {
+
+    margin-top: 2rem;
+  }
+  
+  .challengeActive img {
+
+    margin-top: 2rem;
+  }
+}
+
 .challengeActive footer button.challengeFailedButton {
 
   background: var(--red);
