@@ -3,6 +3,7 @@ import Cookies from 'js-cookie'
 
 import challenges from '../../challenges.json'
 import LevelUpModal from '../components/LevelUpModal'
+import HomeModal from '../components/HomeModal'
 interface Challenge {
   type: 'body' | 'eye',
   description: string
@@ -120,6 +121,8 @@ export function ChallengesProvider({ children, ...rest }: ChallengesProviderProp
         closeLevelUpModal
       }}
     >
+      <HomeModal />
+
       {children}
       
       { isLevelUpModalOpen && <LevelUpModal /> } 

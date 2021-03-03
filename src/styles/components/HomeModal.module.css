@@ -1,0 +1,152 @@
+.homeModalContainer {
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  background: #5965E0;
+  animation: loginSucess 2s;
+  animation-fill-mode: forwards;
+  overflow: hidden;
+}
+
+@keyframes loginSucess {
+  0% {
+    transform: translateX(0px);
+  }
+
+  20% {
+    transform: translateX(20px);
+  }
+
+  100% {
+    transform: translateX(-2000px);
+  }
+}
+
+.container {
+  width: 100vw;
+  max-width: 1200px;
+  height: 100vh;
+  display: flex;
+
+  justify-content: flex-end;
+  align-items: center;
+  
+}
+
+
+
+.container > img {
+  position: absolute;
+  left: 0;
+}
+
+
+.login > h1 {
+  color: white;
+  margin-bottom: 2rem;
+
+  font-size: 2.25rem;
+}
+
+.login > span {
+  color: #B2B9FF;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.login {
+
+  display: flex;
+  flex-direction: column;
+  
+  align-items: flex-start;
+  
+}
+
+.login > img  {
+
+  margin-bottom: 5rem;
+}
+
+.login > span {
+  display: flex;
+  text-align: start;
+  justify-content: center;
+  max-width: 19rem;
+}
+
+.login > span > img {
+  color: white;
+
+  margin-right: 1rem;
+}
+
+.inputContainer {
+  display: flex;
+  height: 4rem;
+  outline: none;
+  border: 0;
+}
+
+.inputContainer > input {
+  padding-left: 1rem;
+
+  line-height: 2.25rem;
+  font-size: 1.25rem;
+  background: linear-gradient(90deg, #4953B8 0%, rgba(73, 83, 184, 0.2) 100%);
+  color: #B2B9FF;
+  outline: none;
+  
+  border-radius: 5px 0px 0px 5px;
+  border: 0;
+}
+
+.inputContainer > input::placeholder {
+  color: #B2B9FF;
+}
+
+.inputContainer > button {
+  padding: 1.5rem;
+  background: #4953B8;
+  border: 0;
+  color: white;
+  outline: none;
+
+  border-radius: 0px 5px 5px 0px;
+}
+
+
+
+@media ( max-width: 1255px ) {
+
+  .container {
+    justify-content: center;
+  }
+
+  .login {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .inputContainer {
+
+    margin-top: 2rem;
+  }
+  
+  .homeModalContainer {
+
+    animation: loginSucess 3s;
+  }
+}
+
+@media ( max-width: 550px ) {
+
+  .homeModalContainer {
+
+    animation: loginSucess 4s;
+  }
+}
