@@ -73,8 +73,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const { level, currentExperience, challengesCompleted, darkModeIsActive } = ctx.req.cookies
 
-  console.log(darkModeIsActive)
-
   return {
     props: {
       level: Number(level),
