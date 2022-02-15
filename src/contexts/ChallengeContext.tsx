@@ -121,7 +121,7 @@ export function ChallengesProvider({ children, ...rest }: ChallengesProviderProp
         closeLevelUpModal
       }}
     >
-      <HomeModal />
+      {/* <HomeModal /> */}
 
       {children}
       
